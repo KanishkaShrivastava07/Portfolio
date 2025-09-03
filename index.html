@@ -10,12 +10,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'deep-navy': '#0f172a',
-                        'navy-light': '#1e293b',
-                        'teal-cyan': '#06b6d4',
-                        'teal-light': '#67e8f9',
-                        'sunset-orange': '#fb923c',
-                        'orange-light': '#fed7aa'
+                        'deep-black': '#0a0a0a',
+                        'dark-gray': '#1a1a1a',
+                        'purple-primary': '#8b5cf6',
+                        'purple-light': '#a78bfa',
+                        'purple-dark': '#6d28d9',
+                        'accent-purple': '#c084fc'
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -51,8 +51,8 @@
         }
         
         @keyframes glow {
-            from { box-shadow: 0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.3); }
-            to { box-shadow: 0 0 30px rgba(6, 182, 212, 0.8), 0 0 60px rgba(6, 182, 212, 0.5); }
+            from { box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3); }
+            to { box-shadow: 0 0 30px rgba(139, 92, 246, 0.8), 0 0 60px rgba(139, 92, 246, 0.5); }
         }
         
         @keyframes slideUp {
@@ -85,7 +85,7 @@
         
         /* Gradient Backgrounds */
         .gradient-bg {
-            background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #334155);
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #0a0a0a, #2d1b69);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
         }
@@ -97,9 +97,9 @@
         }
         
         .glass-dark {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(6, 182, 212, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.3);
         }
         
         /* Advanced Card Effects */
@@ -111,8 +111,8 @@
         .card-3d:hover {
             transform: rotateY(10deg) rotateX(10deg) translateZ(20px);
             box-shadow: 
-                0 20px 40px rgba(6, 182, 212, 0.3),
-                0 0 0 1px rgba(6, 182, 212, 0.2),
+                0 20px 40px rgba(139, 92, 246, 0.3),
+                0 0 0 1px rgba(139, 92, 246, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
@@ -121,19 +121,19 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: linear-gradient(45deg, #06b6d4, #fb923c);
+            background: linear-gradient(45deg, #8b5cf6, #c084fc);
             border-radius: 50%;
             animation: particle 20s linear infinite;
         }
         
         .particle:nth-child(odd) {
             animation-delay: -10s;
-            background: linear-gradient(45deg, #fb923c, #06b6d4);
+            background: linear-gradient(45deg, #c084fc, #8b5cf6);
         }
         
         /* Text Effects */
         .text-gradient {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4);
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa, #c084fc, #8b5cf6);
             background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -142,7 +142,7 @@
         }
         
         .text-glow {
-            text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
         }
         
         /* Progress Bars */
@@ -182,8 +182,8 @@
         /* Navigation Effects */
         .nav-blur {
             backdrop-filter: blur(20px);
-            background: rgba(15, 23, 42, 0.9);
-            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+            background: rgba(10, 10, 10, 0.9);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
         }
         
         /* Button Effects */
@@ -209,14 +209,14 @@
         
         /* Semester Badge */
         .semester-badge {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
             animation: pulse-slow 4s infinite;
         }
         
         /* Code Block Effect */
         .code-block {
-            background: #0f172a;
-            border: 1px solid #334155;
+            background: #0a0a0a;
+            border: 1px solid #2d1b69;
             position: relative;
         }
         
@@ -253,7 +253,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, #06b6d4, #fb923c);
+            background: linear-gradient(to bottom, #8b5cf6, #c084fc);
         }
         
         .timeline-item::after {
@@ -263,13 +263,13 @@
             top: 20px;
             width: 14px;
             height: 14px;
-            background: #06b6d4;
+            background: #8b5cf6;
             border-radius: 50%;
-            box-shadow: 0 0 0 4px #0f172a, 0 0 20px rgba(6, 182, 212, 0.5);
+            box-shadow: 0 0 0 4px #0a0a0a, 0 0 20px rgba(139, 92, 246, 0.5);
         }
     </style>
 </head>
-<body class="bg-deep-navy text-white overflow-x-hidden">
+<body class="bg-deep-black text-white overflow-x-hidden">
     <!-- Particle Background -->
     <div class="fixed inset-0 pointer-events-none z-0">
         <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
@@ -292,28 +292,28 @@
                     <span class="text-white ml-2">Shrivastava</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link text-white hover:text-teal-cyan transition-all duration-300 relative group">
+                    <a href="#home" class="nav-link text-white hover:text-purple-primary transition-all duration-300 relative group">
                         Home
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-cyan transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="#about" class="nav-link text-white hover:text-teal-cyan transition-all duration-300 relative group">
+                    <a href="#about" class="nav-link text-white hover:text-purple-primary transition-all duration-300 relative group">
                         About
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-cyan transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="#skills" class="nav-link text-white hover:text-teal-cyan transition-all duration-300 relative group">
+                    <a href="#skills" class="nav-link text-white hover:text-purple-primary transition-all duration-300 relative group">
                         Skills
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-cyan transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="#projects" class="nav-link text-white hover:text-teal-cyan transition-all duration-300 relative group">
+                    <a href="#projects" class="nav-link text-white hover:text-purple-primary transition-all duration-300 relative group">
                         Projects
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-cyan transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="#contact" class="nav-link text-white hover:text-teal-cyan transition-all duration-300 relative group">
+                    <a href="#contact" class="nav-link text-white hover:text-purple-primary transition-all duration-300 relative group">
                         Contact
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-cyan transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-teal-cyan transition-colors">
+                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-purple-primary transition-colors">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
@@ -321,18 +321,18 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden glass-dark hidden">
             <div class="px-4 py-6 space-y-4">
-                <a href="#home" class="block text-white hover:text-teal-cyan py-2 transition-colors">Home</a>
-                <a href="#about" class="block text-white hover:text-teal-cyan py-2 transition-colors">About</a>
-                <a href="#skills" class="block text-white hover:text-teal-cyan py-2 transition-colors">Skills</a>
-                <a href="#projects" class="block text-white hover:text-teal-cyan py-2 transition-colors">Projects</a>
-                <a href="#contact" class="block text-white hover:text-teal-cyan py-2 transition-colors">Contact</a>
+                <a href="#home" class="block text-white hover:text-purple-primary py-2 transition-colors">Home</a>
+                <a href="#about" class="block text-white hover:text-purple-primary py-2 transition-colors">About</a>
+                <a href="#skills" class="block text-white hover:text-purple-primary py-2 transition-colors">Skills</a>
+                <a href="#projects" class="block text-white hover:text-purple-primary py-2 transition-colors">Projects</a>
+                <a href="#contact" class="block text-white hover:text-purple-primary py-2 transition-colors">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="gradient-bg min-h-screen flex items-center pt-16 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-teal-cyan/10 via-transparent to-sunset-orange/10"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-primary/10 via-transparent to-accent-purple/10"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8 animate-slide-up">
@@ -1036,5 +1036,5 @@
             document.body.classList.add('loaded');
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97959703b6c349a6',t:'MTc1NjkwNjEwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9795ab86a42d3f90',t:'MTc1NjkwNjk0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
