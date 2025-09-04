@@ -1,1040 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanishka Shrivastava - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'deep-black': '#0a0a0a',
-                        'dark-gray': '#1a1a1a',
-                        'purple-primary': '#8b5cf6',
-                        'purple-light': '#a78bfa',
-                        'purple-dark': '#6d28d9',
-                        'accent-purple': '#c084fc'
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'slide-up': 'slideUp 0.8s ease-out',
-                        'fade-in': 'fadeIn 1s ease-out',
-                        'bounce-slow': 'bounce 3s infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'gradient': 'gradient 15s ease infinite',
-                        'particle': 'particle 20s linear infinite',
-                        'typewriter': 'typewriter 4s steps(40) infinite'
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        /* Advanced Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(2deg); }
-            66% { transform: translateY(-10px) rotate(-2deg); }
-        }
-        
-        @keyframes glow {
-            from { box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3); }
-            to { box-shadow: 0 0 30px rgba(139, 92, 246, 0.8), 0 0 60px rgba(139, 92, 246, 0.5); }
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes particle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-        
-        @keyframes typewriter {
-            0%, 50% { width: 0; }
-            100% { width: 100%; }
-        }
-        
-        /* Gradient Backgrounds */
-        .gradient-bg {
-            background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #0a0a0a, #2d1b69);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .glass-dark {
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-        }
-        
-        /* Advanced Card Effects */
-        .card-3d {
-            transform-style: preserve-3d;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-        }
-        
-        .card-3d:hover {
-            transform: rotateY(10deg) rotateX(10deg) translateZ(20px);
-            box-shadow: 
-                0 20px 40px rgba(139, 92, 246, 0.3),
-                0 0 0 1px rgba(139, 92, 246, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Particle System */
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: linear-gradient(45deg, #8b5cf6, #c084fc);
-            border-radius: 50%;
-            animation: particle 20s linear infinite;
-        }
-        
-        .particle:nth-child(odd) {
-            animation-delay: -10s;
-            background: linear-gradient(45deg, #c084fc, #8b5cf6);
-        }
-        
-        /* Text Effects */
-        .text-gradient {
-            background: linear-gradient(135deg, #8b5cf6, #a78bfa, #c084fc, #8b5cf6);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradient 8s ease infinite;
-        }
-        
-        .text-glow {
-            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
-        }
-        
-        /* Progress Bars */
-        .skill-progress {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .skill-progress::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: shimmer 2s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
-        /* Scroll Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Navigation Effects */
-        .nav-blur {
-            backdrop-filter: blur(20px);
-            background: rgba(10, 10, 10, 0.9);
-            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-        }
-        
-        /* Button Effects */
-        .btn-glow {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-glow::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn-glow:hover::before {
-            left: 100%;
-        }
-        
-        /* Semester Badge */
-        .semester-badge {
-            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-            animation: pulse-slow 4s infinite;
-        }
-        
-        /* Code Block Effect */
-        .code-block {
-            background: #0a0a0a;
-            border: 1px solid #2d1b69;
-            position: relative;
-        }
-        
-        .code-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
-            border-radius: 8px 8px 0 0;
-        }
-        
-        .code-block::after {
-            content: '● ● ●';
-            position: absolute;
-            top: 8px;
-            left: 12px;
-            color: #1f2937;
-            font-size: 12px;
-            letter-spacing: 4px;
-        }
-        
-        /* Timeline Effect */
-        .timeline-item {
-            position: relative;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #8b5cf6, #c084fc);
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: -26px;
-            top: 20px;
-            width: 14px;
-            height: 14px;
-            background: #8b5cf6;
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px #0a0a0a, 0 0 20px rgba(139, 92, 246, 0.5);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanishka Shrivastava | Java Developer Portfolio</title>
+  <meta name="description" content="Kanishka Shrivastava – Java Developer Portfolio with projects, skills, and software development journey.">
+  <meta name="keywords" content="Java Developer, Kanishka Shrivastava, Portfolio, Software Engineer, CSE Student">
+  <style>
+    :root {
+      --deep-navy: #0f172a;
+      --teal-cyan: #06b6d4;
+      --sunset-orange: #fb923c;
+      --soft-white: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: var(--soft-white);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--deep-navy);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: var(--teal-cyan);
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--sunset-orange);
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--teal-cyan);
+    }
+
+    section {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 12px;
+      margin: 2rem auto;
+      padding: 2rem;
+      max-width: 900px;
+    }
+
+    .btn {
+      background: var(--teal-cyan);
+      color: var(--deep-navy);
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: var(--sunset-orange);
+      color: #fff;
+    }
+
+    .tags .tag {
+      display: inline-block;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid var(--teal-cyan);
+      padding: 2px 8px;
+      margin: 3px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
-<body class="bg-deep-black text-white overflow-x-hidden">
-    <!-- Particle Background -->
-    <div class="fixed inset-0 pointer-events-none z-0">
-        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-        <div class="particle" style="left: 20%; animation-delay: -2s;"></div>
-        <div class="particle" style="left: 30%; animation-delay: -4s;"></div>
-        <div class="particle" style="left: 40%; animation-delay: -6s;"></div>
-        <div class="particle" style="left: 50%; animation-delay: -8s;"></div>
-        <div class="particle" style="left: 60%; animation-delay: -10s;"></div>
-        <div class="particle" style="left: 70%; animation-delay: -12s;"></div>
-        <div class="particle" style="left: 80%; animation-delay: -14s;"></div>
-        <div class="particle" style="left: 90%; animation-delay: -16s;"></div>
+<body>
+
+<header>
+  <h1>Kanishka Shrivastava</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home">
+  <h2>Hi, I'm Kanishka</h2>
+  <p>A passionate Computer Science student specializing in Java development and software engineering. Currently in my 3rd semester, building innovative solutions and exploring cutting-edge technologies.</p>
+  <div style="margin-top:1rem;">
+    <a href="#contact" class="btn">Let's Connect</a>
+    <a href="#projects" class="btn" style="margin-left:10px;">View Projects</a>
+  </div>
+</section>
+
+<section id="about">
+  <h3>About Me</h3>
+  <p><strong>My Journey:</strong> 3rd semester B.Tech Computer Science student with a strong foundation in Java programming and object-oriented design principles.</p>
+  <p><strong>Passion:</strong> Deeply interested in software development, algorithm optimization, and building scalable applications that solve real-world problems.</p>
+  <p><strong>Growth Mindset:</strong> Continuously enhancing my programming skills through hands-on projects, competitive programming, and exploring emerging technologies.</p>
+</section>
+
+<section id="skills">
+  <h3>Skills & Expertise</h3>
+  <p>Technologies and skills I'm mastering in my journey as a developer:</p>
+
+  <ul>
+    <li>Java – 85%</li>
+    <li>OOP Concepts – 80%</li>
+    <li>Data Structures – 75%</li>
+    <li>Git & GitHub – 70%</li>
+    <li>Command Line – 65%</li>
+    <li>Debugging – 78%</li>
+    <li>Problem Solving – 88%</li>
+    <li>Learning Agility – 92%</li>
+    <li>Team Collaboration – 82%</li>
+  </ul>
+</section>
+
+<section id="projects">
+  <h3>Projects & Learning</h3>
+  <p>Showcasing my journey through hands-on projects and continuous learning</p>
+
+  <article>
+    <h4>Java Applications Suite</h4>
+    <p>Building comprehensive Java applications focusing on OOP principles, data structures, and algorithm implementation.</p>
+    <div class="tags">
+      <span class="tag">In Progress</span>
+      <span class="tag">Java</span>
+      <span class="tag">OOP</span>
     </div>
+  </article>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="text-2xl font-bold">
-                    <span class="text-gradient">Kanishka</span>
-                    <span class="text-white ml-2">Shrivastava</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link text-white hover:text-purple-primary transition-all duration-300 relative group">
-                        Home
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-primary transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#about" class="nav-link text-white hover:text-purple-primary transition-all duration-300 relative group">
-                        About
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-primary transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#skills" class="nav-link text-white hover:text-purple-primary transition-all duration-300 relative group">
-                        Skills
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-primary transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#projects" class="nav-link text-white hover:text-purple-primary transition-all duration-300 relative group">
-                        Projects
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-primary transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#contact" class="nav-link text-white hover:text-purple-primary transition-all duration-300 relative group">
-                        Contact
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-primary transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </div>
-                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-purple-primary transition-colors">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden glass-dark hidden">
-            <div class="px-4 py-6 space-y-4">
-                <a href="#home" class="block text-white hover:text-purple-primary py-2 transition-colors">Home</a>
-                <a href="#about" class="block text-white hover:text-purple-primary py-2 transition-colors">About</a>
-                <a href="#skills" class="block text-white hover:text-purple-primary py-2 transition-colors">Skills</a>
-                <a href="#projects" class="block text-white hover:text-purple-primary py-2 transition-colors">Projects</a>
-                <a href="#contact" class="block text-white hover:text-purple-primary py-2 transition-colors">Contact</a>
-            </div>
-        </div>
-    </nav>
+  <article>
+    <h4>Algorithm Mastery</h4>
+    <p>Solving complex algorithmic challenges and implementing efficient data structures to strengthen problem-solving skills.</p>
+    <div class="tags">
+      <span class="tag">Active</span>
+      <span class="tag">DSA</span>
+      <span class="tag">Algorithms</span>
+    </div>
+  </article>
 
-    <!-- Hero Section -->
-    <section id="home" class="gradient-bg min-h-screen flex items-center pt-16 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-purple-primary/10 via-transparent to-accent-purple/10"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8 animate-slide-up">
-                    <div class="space-y-4">
-                        <div class="semester-badge inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold text-white">
-                            <i class="fas fa-graduation-cap mr-2"></i>
-                            3rd Semester • B.Tech CSE
-                        </div>
-                        <h1 class="text-6xl md:text-7xl font-black leading-tight">
-                            Hi, I'm
-                            <span class="text-gradient text-glow block">Kanishka</span>
-                        </h1>
-                        <div class="text-2xl md:text-3xl font-light text-gray-300">
-                            <span id="typing-text" class="font-mono border-r-2 border-teal-cyan"></span>
-                        </div>
-                    </div>
-                    
-                    <p class="text-xl text-gray-300 leading-relaxed max-w-2xl">
-                        A passionate Computer Science student specializing in 
-                        <span class="text-teal-cyan font-semibold">Java development</span> and 
-                        <span class="text-sunset-orange font-semibold">software engineering</span>. 
-                        Currently in my 3rd semester, building innovative solutions and exploring cutting-edge technologies.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-6">
-                        <button class="btn-glow bg-gradient-to-r from-sunset-orange to-orange-600 hover:from-orange-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-                            <i class="fas fa-rocket mr-2"></i>
-                            Let's Connect
-                        </button>
-                        <button class="btn-glow glass-effect border-2 border-teal-cyan text-teal-cyan hover:bg-teal-cyan hover:text-deep-navy px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105">
-                            <i class="fas fa-code mr-2"></i>
-                            View Projects
-                        </button>
-                    </div>
-                    
-                    <div class="flex items-center space-x-8 pt-8">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-teal-cyan">3rd</div>
-                            <div class="text-sm text-gray-400">Semester</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-sunset-orange">Java</div>
-                            <div class="text-sm text-gray-400">Specialist</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-teal-cyan">CSE</div>
-                            <div class="text-sm text-gray-400">Student</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flex justify-center lg:justify-end">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-gradient-to-r from-teal-cyan to-sunset-orange rounded-full blur-3xl opacity-30 animate-pulse-slow"></div>
-                        <div class="relative w-96 h-96 animate-float">
-                            <div class="absolute inset-0 bg-gradient-to-br from-teal-cyan via-blue-500 to-sunset-orange rounded-full animate-glow"></div>
-                            <div class="absolute inset-4 bg-deep-navy rounded-full flex items-center justify-center">
-                                <div class="text-center space-y-4">
-                                    <i class="fas fa-laptop-code text-6xl text-teal-cyan"></i>
-                                    <div class="text-2xl font-bold text-white">Kanishka</div>
-                                    <div class="text-sm text-gray-400 font-mono">Software Developer</div>
-                                    <div class="flex justify-center space-x-2 mt-4">
-                                        <div class="w-2 h-2 bg-teal-cyan rounded-full animate-bounce"></div>
-                                        <div class="w-2 h-2 bg-sunset-orange rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
-                                        <div class="w-2 h-2 bg-teal-cyan rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <article>
+    <h4>Future Innovations</h4>
+    <p>Exploring emerging technologies and planning innovative projects to expand my technical expertise and impact.</p>
+    <div class="tags">
+      <span class="tag">Planning</span>
+      <span class="tag">Innovation</span>
+      <span class="tag">Research</span>
+    </div>
+  </article>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="py-32 bg-gradient-to-br from-navy-light to-deep-navy relative">
-        <div class="absolute inset-0 bg-gradient-to-r from-teal-cyan/5 via-transparent to-sunset-orange/5"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-5xl font-black text-gradient mb-6">About Me</h2>
-                <div class="w-32 h-1 bg-gradient-to-r from-teal-cyan to-sunset-orange mx-auto mb-8"></div>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                    Passionate about creating innovative solutions through code
-                </p>
-            </div>
-            
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8 reveal">
-                    <div class="glass-dark p-8 rounded-3xl card-3d">
-                        <h3 class="text-3xl font-bold text-white mb-6">My Journey</h3>
-                        <div class="space-y-6">
-                            <div class="timeline-item pl-8">
-                                <h4 class="text-xl font-semibold text-teal-cyan mb-2">Current Focus</h4>
-                                <p class="text-gray-300 leading-relaxed">
-                                    3rd semester B.Tech Computer Science student with a strong foundation in Java programming 
-                                    and object-oriented design principles.
-                                </p>
-                            </div>
-                            <div class="timeline-item pl-8">
-                                <h4 class="text-xl font-semibold text-sunset-orange mb-2">Passion</h4>
-                                <p class="text-gray-300 leading-relaxed">
-                                    Deeply interested in software development, algorithm optimization, and building 
-                                    scalable applications that solve real-world problems.
-                                </p>
-                            </div>
-                            <div class="timeline-item pl-8">
-                                <h4 class="text-xl font-semibold text-teal-cyan mb-2">Growth Mindset</h4>
-                                <p class="text-gray-300 leading-relaxed">
-                                    Continuously enhancing my programming skills through hands-on projects, 
-                                    competitive programming, and exploring emerging technologies.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-6 reveal">
-                    <div class="glass-effect p-6 rounded-2xl card-3d text-center group hover:bg-teal-cyan/10 transition-all duration-300">
-                        <div class="w-16 h-16 bg-gradient-to-br from-teal-cyan to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-graduation-cap text-2xl text-white"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mb-2">Education</h4>
-                        <p class="text-gray-400">B.Tech CSE</p>
-                        <p class="text-teal-cyan font-semibold">3rd Semester</p>
-                    </div>
-                    
-                    <div class="glass-effect p-6 rounded-2xl card-3d text-center group hover:bg-sunset-orange/10 transition-all duration-300">
-                        <div class="w-16 h-16 bg-gradient-to-br from-sunset-orange to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                            <i class="fab fa-java text-2xl text-white"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mb-2">Specialty</h4>
-                        <p class="text-gray-400">Java Programming</p>
-                        <p class="text-sunset-orange font-semibold">OOP Expert</p>
-                    </div>
-                    
-                    <div class="glass-effect p-6 rounded-2xl card-3d text-center group hover:bg-purple-500/10 transition-all duration-300">
-                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-rocket text-2xl text-white"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mb-2">Focus</h4>
-                        <p class="text-gray-400">Software Dev</p>
-                        <p class="text-purple-400 font-semibold">Innovation</p>
-                    </div>
-                    
-                    <div class="glass-effect p-6 rounded-2xl card-3d text-center group hover:bg-green-500/10 transition-all duration-300">
-                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-brain text-2xl text-white"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mb-2">Mindset</h4>
-                        <p class="text-gray-400">Problem Solver</p>
-                        <p class="text-green-400 font-semibold">Learner</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="contact">
+  <h3>Contact</h3>
+  <p>Have a project, internship, or idea to discuss? I’m open to collaboration and opportunities to build meaningful software. Reach out via email or phone — I typically reply within a few days.</p>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-32 bg-gradient-to-br from-deep-navy via-navy-light to-deep-navy relative">
-        <div class="absolute inset-0 bg-gradient-to-r from-sunset-orange/5 via-transparent to-teal-cyan/5"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-5xl font-black text-gradient mb-6">Skills & Expertise</h2>
-                <div class="w-32 h-1 bg-gradient-to-r from-sunset-orange to-teal-cyan mx-auto mb-8"></div>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                    Technologies and skills I'm mastering in my journey as a developer
-                </p>
-            </div>
-            
-            <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Programming Languages -->
-                <div class="glass-dark p-8 rounded-3xl card-3d reveal">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gradient-to-br from-sunset-orange to-red-500 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fas fa-code text-white text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">Programming</h3>
-                    </div>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-white font-semibold flex items-center">
-                                    <i class="fab fa-java text-sunset-orange mr-2"></i>
-                                    Java
-                                </span>
-                                <span class="text-teal-cyan font-bold">85%</span>
-                            </div>
-                            <div class="bg-gray-700 rounded-full h-3 skill-progress overflow-hidden">
-                                <div class="bg-gradient-to-r from-sunset-orange to-red-500 h-full rounded-full transition-all duration-2000 ease-out" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-white font-semibold flex items-center">
-                                    <i class="fas fa-cube text-teal-cyan mr-2"></i>
-                                    OOP Concepts
-                                </span>
-                                <span class="text-teal-cyan font-bold">80%</span>
-                            </div>
-                            <div class="bg-gray-700 rounded-full h-3 skill-progress overflow-hidden">
-                                <div class="bg-gradient-to-r from-teal-cyan to-blue-500 h-full rounded-full transition-all duration-2000 ease-out" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-white font-semibold flex items-center">
-                                    <i class="fas fa-database text-purple-400 mr-2"></i>
-                                    Data Structures
-                                </span>
-                                <span class="text-teal-cyan font-bold">75%</span>
-                            </div>
-                            <div class="bg-gray-700 rounded-full h-3 skill-progress overflow-hidden">
-                                <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-full rounded-full transition-all duration-2000 ease-out" style="width: 75%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Development Tools -->
-                <div class="glass-dark p-8 rounded-3xl card-3d reveal">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gradient-to-br from-teal-cyan to-blue-500 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fas fa-tools text-white text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">Development</h3>
-                    </div>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-white font-semibold flex items-center">
-                                    <i class="fab fa-git-alt text-orange-500 mr-2"></i>
-                                    Git & GitHub
-                                </span>
-                                <span class="text-teal-cyan font-bold">70%</span>
-                            </div>
-                            <div class="bg-gray-700 rounded-full h-3 skill-progress overflow-hidden">
-                                <div class="bg-gradient-to-r from-orange-500 to-red-500 h-full rounded-full transition-all duration-2000 ease-out" style="width: 70%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-white font-semibold flex items-center">
-                                    <i class="fas fa-terminal text-green-400 mr-2"></i>
-                                    Command Line
-                                </span>
-                                <span class="text-teal-cyan font-bold">65%</span>
-                            </div>
-                            <div class="bg-gray-700 rounded-full h-3 skill-progress overflow-hidden">
-                                <div class="bg-gradient-to-r from-green-400 to-emerald-500 h-full rounded-full transition-all duration-2000 ease-out" style="width: 65%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-white font-semibold flex items-center">
-                                    <i class="fas fa-bug text-red-400 mr-2"></i>
-                                    Debugging
-                                </span>
-                                <span class="text-teal-cyan font-bold">78%</span>
-                            </div>
-                            <div class="bg-gray-700 rounded-full h-3 skill-progress overflow-hidden">
-                                <div class="bg-gradient-to-r from-red-400 to-pink-500 h-full rounded-full transition-all duration-2000 ease-out" style="width: 78%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Soft Skills -->
-                <div class="glass-dark p-8 rounded-3xl card-3d reveal">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fas fa-lightbulb text-white text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">Core Skills</h3>
-                    </div>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-white font-semibold flex items-center">
-                                    <i class="fas fa-puzzle-piece text-yellow-400 mr-2"></i>
-                                    Problem Solving
-                                </span>
-                                <span class="text-teal-cyan font-bold">88%</span>
-                            </div>
-                            <div class="bg-gray-700 rounded-full h-3 skill-progress overflow-hidden">
-                                <div class="bg-gradient-to-r from-yellow-400 to-orange-500 h-full rounded-full transition-all duration-2000 ease-out" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-white font-semibold flex items-center">
-                                    <i class="fas fa-graduation-cap text-blue-400 mr-2"></i>
-                                    Learning Agility
-                                </span>
-                                <span class="text-teal-cyan font-bold">92%</span>
-                            </div>
-                            <div class="bg-gray-700 rounded-full h-3 skill-progress overflow-hidden">
-                                <div class="bg-gradient-to-r from-blue-400 to-indigo-500 h-full rounded-full transition-all duration-2000 ease-out" style="width: 92%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-white font-semibold flex items-center">
-                                    <i class="fas fa-users text-green-400 mr-2"></i>
-                                    Team Collaboration
-                                </span>
-                                <span class="text-teal-cyan font-bold">82%</span>
-                            </div>
-                            <div class="bg-gray-700 rounded-full h-3 skill-progress overflow-hidden">
-                                <div class="bg-gradient-to-r from-green-400 to-teal-500 h-full rounded-full transition-all duration-2000 ease-out" style="width: 82%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Code Showcase -->
-            <div class="mt-16 reveal">
-                <div class="code-block rounded-2xl p-8 pt-12">
-                    <div class="font-mono text-sm text-gray-300 leading-relaxed">
-                        <div class="text-purple-400">public class</div>
-                        <div class="text-yellow-400 ml-4">KanishkaShrivastava</div>
-                        <div class="text-white ml-4">{</div>
-                        <div class="ml-8">
-                            <div class="text-blue-400">private String</div>
-                            <div class="text-white ml-4">currentSemester = <span class="text-green-400">"3rd Semester"</span>;</div>
-                        </div>
-                        <div class="ml-8">
-                            <div class="text-blue-400">private String</div>
-                            <div class="text-white ml-4">specialization = <span class="text-green-400">"Java Development"</span>;</div>
-                        </div>
-                        <div class="ml-8">
-                            <div class="text-blue-400">private boolean</div>
-                            <div class="text-white ml-4">passionateAboutCoding = <span class="text-orange-400">true</span>;</div>
-                        </div>
-                        <div class="text-white ml-4">}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <ul style="margin-top:14px;padding-left:18px;color:var(--text-muted)">
+    <li><strong>Email:</strong> <a href="mailto:shrivastavakanishka06@gmail.com">shrivastavakanishka06@gmail.com</a></li>
+    <li><strong>Phone:</strong> <a href="tel:+917470927071">+91 74709 27071</a></li>
+    <li><strong>GitHub:</strong> <a href="https://github.com/kanishkashrivastava07" target="_blank">kanishkashrivastava07</a></li>
+  </ul>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-32 bg-gradient-to-br from-navy-light to-deep-navy relative">
-        <div class="absolute inset-0 bg-gradient-to-r from-teal-cyan/5 via-transparent to-sunset-orange/5"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-5xl font-black text-gradient mb-6">Projects & Learning</h2>
-                <div class="w-32 h-1 bg-gradient-to-r from-teal-cyan to-sunset-orange mx-auto mb-8"></div>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                    Showcasing my journey through hands-on projects and continuous learning
-                </p>
-            </div>
-            
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div class="glass-dark rounded-3xl overflow-hidden card-3d reveal group">
-                    <div class="h-48 bg-gradient-to-br from-teal-cyan via-blue-500 to-purple-600 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-black/20"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fab fa-java text-6xl text-white group-hover:scale-110 transition-transform duration-300"></i>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs text-white font-semibold">
-                                In Progress
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-white mb-4">Java Applications Suite</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Building comprehensive Java applications focusing on OOP principles, 
-                            data structures, and algorithm implementation.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-sunset-orange/20 text-sunset-orange px-3 py-1 rounded-full text-sm font-medium">Java</span>
-                            <span class="bg-teal-cyan/20 text-teal-cyan px-3 py-1 rounded-full text-sm font-medium">OOP</span>
-                            <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">Algorithms</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center text-gray-400 text-sm">
-                                <i class="fas fa-calendar mr-2"></i>
-                                Ongoing
-                            </div>
-                            <button class="text-teal-cyan hover:text-white transition-colors">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="glass-dark rounded-3xl overflow-hidden card-3d reveal group">
-                    <div class="h-48 bg-gradient-to-br from-sunset-orange via-red-500 to-pink-600 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-black/20"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-brain text-6xl text-white group-hover:scale-110 transition-transform duration-300"></i>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs text-white font-semibold">
-                                Active
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-white mb-4">Algorithm Mastery</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Solving complex algorithmic challenges and implementing efficient 
-                            data structures to strengthen problem-solving skills.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-sm font-medium">DSA</span>
-                            <span class="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-sm font-medium">Algorithms</span>
-                            <span class="bg-pink-500/20 text-pink-400 px-3 py-1 rounded-full text-sm font-medium">Logic</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center text-gray-400 text-sm">
-                                <i class="fas fa-calendar mr-2"></i>
-                                Daily Practice
-                            </div>
-                            <button class="text-sunset-orange hover:text-white transition-colors">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="glass-dark rounded-3xl overflow-hidden card-3d reveal group">
-                    <div class="h-48 bg-gradient-to-br from-green-500 via-emerald-500 to-teal-600 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-black/20"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-rocket text-6xl text-white group-hover:scale-110 transition-transform duration-300"></i>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs text-white font-semibold">
-                                Planning
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-white mb-4">Future Innovations</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Exploring emerging technologies and planning innovative projects 
-                            to expand my technical expertise and impact.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-medium">Innovation</span>
-                            <span class="bg-teal-500/20 text-teal-400 px-3 py-1 rounded-full text-sm font-medium">Research</span>
-                            <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-sm font-medium">Growth</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center text-gray-400 text-sm">
-                                <i class="fas fa-calendar mr-2"></i>
-                                Coming Soon
-                            </div>
-                            <button class="text-green-400 hover:text-white transition-colors">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div style="margin-top:12px;display:flex;gap:10px">
+    <a class="btn" href="mailto:shrivastavakanishka06@gmail.com">Email Me</a>
+    <a class="btn" href="tel:+917470927071">Call</a>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-32 gradient-bg relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-teal-cyan/10 via-transparent to-sunset-orange/10"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-5xl font-black text-gradient mb-6">Let's Connect</h2>
-                <div class="w-32 h-1 bg-gradient-to-r from-sunset-orange to-teal-cyan mx-auto mb-8"></div>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                    Ready to collaborate, learn, or discuss exciting opportunities in technology
-                </p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="glass-dark p-12 rounded-3xl card-3d reveal text-center">
-                    <h3 class="text-4xl font-bold text-white mb-12">Get In Touch</h3>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="flex flex-col items-center group cursor-pointer">
-                            <div class="w-20 h-20 bg-gradient-to-br from-teal-cyan to-blue-500 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                                <i class="fas fa-envelope text-white text-2xl"></i>
-                            </div>
-                            <h4 class="text-xl font-semibold text-white mb-2">Email</h4>
-                            <a href="mailto:shrivastavakanishka06@gmail.com" class="text-teal-cyan hover:text-white transition-colors text-lg break-all">
-                                shrivastavakanishka06@gmail.com
-                            </a>
-                        </div>
-                        
-                        <div class="flex flex-col items-center group cursor-pointer">
-                            <div class="w-20 h-20 bg-gradient-to-br from-sunset-orange to-red-500 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                                <i class="fas fa-phone text-white text-2xl"></i>
-                            </div>
-                            <h4 class="text-xl font-semibold text-white mb-2">Phone</h4>
-                            <a href="tel:7470927071" class="text-sunset-orange hover:text-white transition-colors text-lg">
-                                +91 7470927071
-                            </a>
-                        </div>
-                        
-                        <div class="flex flex-col items-center group">
-                            <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                                <i class="fas fa-map-marker-alt text-white text-2xl"></i>
-                            </div>
-                            <h4 class="text-xl font-semibold text-white mb-2">Location</h4>
-                            <p class="text-gray-300 text-lg">India</p>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/10">
-                        <div class="glass-effect p-6 rounded-2xl card-3d">
-                            <div class="text-3xl font-bold text-teal-cyan mb-2">3rd</div>
-                            <div class="text-sm text-gray-400">Semester</div>
-                        </div>
-                        <div class="glass-effect p-6 rounded-2xl card-3d">
-                            <div class="text-3xl font-bold text-sunset-orange mb-2">Java</div>
-                            <div class="text-sm text-gray-400">Expert</div>
-                        </div>
-                        <div class="glass-effect p-6 rounded-2xl card-3d">
-                            <div class="text-3xl font-bold text-purple-400 mb-2">CSE</div>
-                            <div class="text-sm text-gray-400">Student</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<footer>
+  © 2024 Kanishka Shrivastava. Made with ❤️ • Crafted with passion and code.
+</footer>
 
-    <!-- Footer -->
-    <footer class="bg-deep-navy border-t border-white/10 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="mb-8">
-                    <h3 class="text-3xl font-bold text-gradient mb-4">Kanishka Shrivastava</h3>
-                    <p class="text-gray-400 text-lg mb-6">3rd Semester CSE Student | Java Developer | Problem Solver</p>
-                    <div class="flex justify-center space-x-6">
-                        <a href="mailto:shrivastavakanishka06@gmail.com" class="w-12 h-12 bg-gradient-to-br from-teal-cyan to-blue-500 rounded-xl flex items-center justify-center text-white hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:7470927071" class="w-12 h-12 bg-gradient-to-br from-sunset-orange to-red-500 rounded-xl flex items-center justify-center text-white hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="border-t border-white/10 pt-8">
-                    <p class="text-gray-500">&copy; 2024 Kanishka Shrivastava. Crafted with passion and code.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Enhanced Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Enhanced Smooth scrolling with navbar blur effect
-        const navbar = document.getElementById('navbar');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('nav-blur');
-            } else {
-                navbar.classList.remove('nav-blur');
-            }
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    mobileMenu.classList.add('hidden');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
-                }
-            });
-        });
-
-        // Enhanced Typing animation with multiple effects
-        const typingText = document.getElementById('typing-text');
-        const texts = [
-            'Computer Science Student',
-            'Java Developer',
-            'Problem Solver',
-            '3rd Semester CSE',
-            'Software Engineer',
-            'Code Enthusiast'
-        ];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function typeWriter() {
-            const currentText = texts[textIndex];
-            
-            if (isDeleting) {
-                typingText.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingText.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            if (!isDeleting && charIndex === currentText.length) {
-                setTimeout(() => isDeleting = true, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-            }
-
-            setTimeout(typeWriter, isDeleting ? 50 : 100);
-        }
-
-        typeWriter();
-
-
-
-        // Enhanced Scroll reveal animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    
-                    // Animate skill bars when skills section is visible
-                    if (entry.target.id === 'skills') {
-                        const skillBars = entry.target.querySelectorAll('.skill-progress div');
-                        skillBars.forEach((bar, index) => {
-                            setTimeout(() => {
-                                bar.style.transform = 'scaleX(1)';
-                            }, index * 200);
-                        });
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // Observe all reveal elements
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Observe sections for skill bar animations
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Enhanced particle system
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            document.querySelector('.fixed.inset-0').appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 25000);
-        }
-
-        // Create particles periodically
-        setInterval(createParticle, 3000);
-
-        // Initialize skill bar animations
-        document.querySelectorAll('.skill-progress div').forEach(bar => {
-            bar.style.transform = 'scaleX(0)';
-            bar.style.transformOrigin = 'left';
-            bar.style.transition = 'transform 1.5s ease-out';
-        });
-
-        // Add hover effects to cards
-        document.querySelectorAll('.card-3d').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'rotateY(5deg) rotateX(5deg) translateZ(20px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0px)';
-            });
-        });
-
-        // Add loading animation on page load
-        window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9795ab86a42d3f90',t:'MTc1NjkwNjk0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
