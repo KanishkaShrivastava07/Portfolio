@@ -1,192 +1,201 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kanishka Shrivastava | Java Developer Portfolio</title>
-  <meta name="description" content="Kanishka Shrivastava – Java Developer Portfolio with projects, skills, and software development journey.">
-  <meta name="keywords" content="Java Developer, Kanishka Shrivastava, Portfolio, Software Engineer, CSE Student">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kanishka Shrivastava — Java Developer</title>
+  <meta name="description" content="Portfolio of Kanishka Shrivastava — Java Developer & Software Enthusiast" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --deep-navy: #0f172a;
-      --teal-cyan: #06b6d4;
-      --sunset-orange: #fb923c;
-      --soft-white: #f8fafc;
-      --text-muted: #94a3b8;
+    :root{
+      --bg:#071029;
+      --bg-2:#0b2540;
+      --teal:#00d1c1;
+      --accent:#ff6a3d;
+      --soft:#f6f8fb;
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.03);
+      --card-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      --mono: 'JetBrains Mono', monospace;
+      --ui: 'Inter', system-ui, sans-serif;
     }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:var(--ui);background:linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 60%);color:var(--soft);-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:32px}
 
-    html {
-      scroll-behavior: smooth;
+    header{position:relative;z-index:2}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo .mark{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;font-family:var(--mono);color:var(--bg)}
+    .nav-links{display:flex;gap:18px;font-weight:600}
+    .cta{background:linear-gradient(90deg,var(--teal),var(--accent));padding:10px 16px;border-radius:10px;color:var(--bg);font-weight:700;cursor:pointer;border:none}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;padding:40px 0}
+    .intro h1{font-size:50px;margin:0 0 8px;line-height:1.1;font-weight:800;letter-spacing:-0.02em}
+    .intro h1 .name{background:linear-gradient(90deg,var(--teal),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .tagline{font-family:var(--mono);font-size:16px;color:var(--teal);margin-bottom:16px;font-weight:600}
+    .intro p{color:rgba(246,248,251,0.9);font-size:18px;max-width:90%}
+    .highlight{background:linear-gradient(90deg,var(--teal),var(--accent));-webkit-background-clip:text;color:transparent;font-weight:700}
+    .availability{margin-top:8px;color:var(--accent);font-weight:600}
+    .location{font-size:14px;color:rgba(246,248,251,0.8);margin-top:4px}
+    .buttons{display:flex;gap:12px;margin-top:20px}
+
+    .card-profile{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:14px;box-shadow:var(--card-shadow)}
+    .avatar{width:100%;height:420px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,var(--bg-2),#0b1930);display:flex;align-items:center;justify-content:center}
+    .avatar img{width:100%; height:100%; object-fit:cover; border-radius:10px; box-shadow: 0 10px 30px rgba(2,6,23,0.6);}
+    .meta{margin-top:12px;font-size:14px}
+
+    section{padding:44px 0;border-top:1px solid rgba(255,255,255,0.02)}
+    h2.section-title{font-size:22px;margin:0 0 18px;color:var(--soft)}
+
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .skill{background:var(--glass-2);padding:14px;border-radius:10px}
+    .skill h3{margin:0 0 8px;font-size:14px}
+    .bar{height:10px;background:rgba(255,255,255,0.03);border-radius:8px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--accent));width:0}
+    .skill small{opacity:0.8}
+
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .project{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:16px;border-radius:12px;min-height:180px;border:1px solid rgba(255,255,255,0.03)}
+    .project h4{margin:0 0 6px}
+    .project p{font-size:13px;color:rgba(246,248,251,0.85)}
+    .status{font-size:12px;color:var(--accent);font-weight:600;margin-top:6px;display:block}
+
+    form{display:grid;gap:12px;margin-top:20px}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);color:var(--soft);font-family:var(--ui)}
+    button[type=submit]{background:linear-gradient(90deg,var(--teal),var(--accent));padding:10px;border-radius:8px;border:none;color:var(--bg);font-weight:700;cursor:pointer}
+
+    footer{padding:28px 0;text-align:center;color:rgba(246,248,251,0.6);font-size:14px}
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .skills-grid{grid-template-columns:repeat(2,1fr)}
+      .projects{grid-template-columns:repeat(2,1fr)}
     }
-
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: var(--soft-white);
-      line-height: 1.6;
-    }
-
-    header {
-      background: var(--deep-navy);
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    nav a {
-      color: var(--teal-cyan);
-      margin: 0 10px;
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      color: var(--sunset-orange);
-    }
-
-    h1, h2, h3, h4 {
-      color: var(--teal-cyan);
-    }
-
-    section {
-      background: rgba(15, 23, 42, 0.6);
-      border-radius: 12px;
-      margin: 2rem auto;
-      padding: 2rem;
-      max-width: 900px;
-    }
-
-    .btn {
-      background: var(--teal-cyan);
-      color: var(--deep-navy);
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .btn:hover {
-      background: var(--sunset-orange);
-      color: #fff;
-    }
-
-    .tags .tag {
-      display: inline-block;
-      background: rgba(6, 182, 212, 0.1);
-      border: 1px solid var(--teal-cyan);
-      padding: 2px 8px;
-      margin: 3px;
-      border-radius: 12px;
-      font-size: 0.85rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
+    @media (max-width:560px){
+      .skills-grid{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr}
+      .intro h1{font-size:36px}
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <div class="mark">KS</div>
+          <div>
+            <div style="font-weight:800">Kanishka Shrivastava</div>
+            <div style="font-size:12px;opacity:0.8">Java Developer • B.Tech CSE</div>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+          <button class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+        </div>
+      </nav>
 
-<header>
-  <h1>Kanishka Shrivastava</h1>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+      <div class="hero">
+        <div class="intro">
+          <div class="tagline">Java Developer • Software Enthusiast • Problem Solver</div>
+          <h1>Hi, I'm <span class="name">Kanishka Shrivastava</span></h1>
+          <p>I am pursuing a <strong>B.Tech in Computer Science and Engineering</strong>. I possess a strong foundation in <strong>Java programming</strong> and a keen interest in software development. Currently enhancing my programming skills and building practical projects to solve real problems.</p>
+          <div class="availability">Available for internships & freelance</div>
+          <div class="location">Location: India</div>
+          <div class="buttons">
+            <button class="cta" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+            <button class="cta" style="background:transparent;border:1px solid var(--teal)" onclick="window.open('mailto:shrivastavakanishka06@gmail.com')">Email Me</button>
+          </div>
+        </div>
 
-<section id="home">
-  <h2>Hi, I'm Kanishka</h2>
-  <p>A passionate Computer Science student specializing in Java development and software engineering. Currently in my 3rd semester, building innovative solutions and exploring cutting-edge technologies.</p>
-  <div style="margin-top:1rem;">
-    <a href="#contact" class="btn">Let's Connect</a>
-    <a href="#projects" class="btn" style="margin-left:10px;">View Projects</a>
-  </div>
-</section>
-
-<section id="about">
-  <h3>About Me</h3>
-  <p><strong>My Journey:</strong> 3rd semester B.Tech Computer Science student with a strong foundation in Java programming and object-oriented design principles.</p>
-  <p><strong>Passion:</strong> Deeply interested in software development, algorithm optimization, and building scalable applications that solve real-world problems.</p>
-  <p><strong>Growth Mindset:</strong> Continuously enhancing my programming skills through hands-on projects, competitive programming, and exploring emerging technologies.</p>
-</section>
-
-<section id="skills">
-  <h3>Skills & Expertise</h3>
-  <p>Technologies and skills I'm mastering in my journey as a developer:</p>
-
-  <ul>
-    <li>Java – 85%</li>
-    <li>OOP Concepts – 80%</li>
-    <li>Data Structures – 75%</li>
-    <li>Git & GitHub – 70%</li>
-    <li>Command Line – 65%</li>
-    <li>Debugging – 78%</li>
-    <li>Problem Solving – 88%</li>
-    <li>Learning Agility – 92%</li>
-    <li>Team Collaboration – 82%</li>
-  </ul>
-</section>
-
-<section id="projects">
-  <h3>Projects & Learning</h3>
-  <p>Showcasing my journey through hands-on projects and continuous learning</p>
-
-  <article>
-    <h4>Java Applications Suite</h4>
-    <p>Building comprehensive Java applications focusing on OOP principles, data structures, and algorithm implementation.</p>
-    <div class="tags">
-      <span class="tag">In Progress</span>
-      <span class="tag">Java</span>
-      <span class="tag">OOP</span>
+        <aside class="card-profile">
+          <div class="avatar">
+            <img src="profile.png" alt="Kanishka Shrivastava">
+          </div>
+          <div class="meta">
+            <strong>Contact</strong><br>
+            shrivastavakanishka06@gmail.com<br>
+            +91 74709 27071<br><br>
+            <strong>Education</strong><br>
+            B.Tech — CSE<br>
+            Currently studying & building projects
+          </div>
+        </aside>
+      </div>
     </div>
-  </article>
+  </header>
 
-  <article>
-    <h4>Algorithm Mastery</h4>
-    <p>Solving complex algorithmic challenges and implementing efficient data structures to strengthen problem-solving skills.</p>
-    <div class="tags">
-      <span class="tag">Active</span>
-      <span class="tag">DSA</span>
-      <span class="tag">Algorithms</span>
-    </div>
-  </article>
+  <main class="container">
+    <section id="skills">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill"><h3>Java</h3><div class="bar"><i style="width:85%"></i></div><small>Proficiency: 85%</small></div>
+        <div class="skill"><h3>OOP Concepts</h3><div class="bar"><i style="width:80%"></i></div><small>Proficiency: 80%</small></div>
+        <div class="skill"><h3>Data Structures</h3><div class="bar"><i style="width:75%"></i></div><small>Proficiency: 75%</small></div>
+        <div class="skill"><h3>Git & GitHub</h3><div class="bar"><i style="width:70%"></i></div><small>Proficiency: 70%</small></div>
+        <div class="skill"><h3>Command Line</h3><div class="bar"><i style="width:65%"></i></div><small>Proficiency: 65%</small></div>
+        <div class="skill"><h3>Debugging</h3><div class="bar"><i style="width:78%"></i></div><small>Proficiency: 78%</small></div>
+        <div class="skill"><h3>Problem Solving</h3><div class="bar"><i style="width:88%"></i></div><small>Proficiency: 88%</small></div>
+        <div class="skill"><h3>Learning Agility</h3><div class="bar"><i style="width:92%"></i></div><small>Proficiency: 92%</small></div>
+        <div class="skill"><h3>Team Collaboration</h3><div class="bar"><i style="width:82%"></i></div><small>Proficiency: 82%</small></div>
+      </div>
+    </section>
 
-  <article>
-    <h4>Future Innovations</h4>
-    <p>Exploring emerging technologies and planning innovative projects to expand my technical expertise and impact.</p>
-    <div class="tags">
-      <span class="tag">Planning</span>
-      <span class="tag">Innovation</span>
-      <span class="tag">Research</span>
-    </div>
-  </article>
-</section>
+    <section id="projects">
+      <h2 class="section-title">Projects & Learning</h2>
+      <div class="projects">
+        <article class="project">
+          <h4>Java Applications Suite</h4>
+          <p>Building comprehensive Java applications focusing on OOP principles, data structures, and algorithm implementation.</p>
+          <span class="status">Status: In Progress</span>
+        </article>
 
-<section id="contact">
-  <h3>Contact</h3>
-  <p>Have a project, internship, or idea to discuss? I’m open to collaboration and opportunities to build meaningful software. Reach out via email or phone — I typically reply within a few days.</p>
+        <article class="project">
+          <h4>Algorithm Mastery</h4>
+          <p>Solving complex algorithmic challenges and implementing efficient data structures to strengthen problem-solving skills.</p>
+          <span class="status">Status: Active</span>
+        </article>
 
-  <ul style="margin-top:14px;padding-left:18px;color:var(--text-muted)">
-    <li><strong>Email:</strong> <a href="mailto:shrivastavakanishka06@gmail.com">shrivastavakanishka06@gmail.com</a></li>
-    <li><strong>Phone:</strong> <a href="tel:+917470927071">+91 74709 27071</a></li>
-    <li><strong>GitHub:</strong> <a href="https://github.com/kanishkashrivastava07" target="_blank">kanishkashrivastava07</a></li>
-  </ul>
+        <article class="project">
+          <h4>Future Innovations</h4>
+          <p>Exploring emerging technologies and planning innovative projects to expand my technical expertise and impact.</p>
+          <span class="status">Status: Planning</span>
+        </article>
+      </div>
+    </section>
 
-  <div style="margin-top:12px;display:flex;gap:10px">
-    <a class="btn" href="mailto:shrivastavakanishka06@gmail.com">Email Me</a>
-    <a class="btn" href="tel:+917470927071">Call</a>
-  </div>
-</section>
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p>Interested in working together or have a project in mind? Feel free to reach out via email or phone.</p>
+      <p><strong>Email:</strong> shrivastavakanishka06@gmail.com<br>
+      <strong>Phone:</strong> +91 74709 27071</p>
+      <p><a href="Kanishka_Shrivastava_Resume.pdf" download>Download my Resume</a></p>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
 
-<footer>
-  © 2024 Kanishka Shrivastava. Made with ❤️ • Crafted with passion and code.
-</footer>
+  <footer>
+     © 2024 Kanishka Shrivastava. Made with ❤️ • Crafted with passion and code.
+  </footer>
 
+  <script>
+    // Animate skill bars
+    const skillBars = document.querySelectorAll('.bar > i');
+    window.addEventListener('scroll', () => {
+      skillBars.forEach(bar => {
+        bar.style.width = bar.getAttribute('style').match(/width:\s*(\d+%)/)[1];
+      });
+    });
+  </script>
 </body>
 </html>
