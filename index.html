@@ -11,7 +11,7 @@
     :root{
       --bg:#071029;
       --bg-2:#0b2540;
-      --teal:#00d1c1;
+      --primary:#00d1c1;
       --accent:#ff6a3d;
       --soft:#f6f8fb;
       --glass: rgba(255,255,255,0.06);
@@ -21,23 +21,26 @@
       --ui: 'Inter', system-ui, sans-serif;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:var(--ui);background:linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 60%);color:var(--soft);-webkit-font-smoothing:antialiased}
-    a{color:inherit}
+    html,body{height:100%;margin:0;font-family:var(--ui);background:linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 60%);color:var(--soft);-webkit-font-smoothing:antialiased;transition:background 0.3s,color 0.3s}
+    a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:32px}
 
     header{position:relative;z-index:2}
     nav{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
     .logo{display:flex;gap:12px;align-items:center}
-    .logo .mark{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;font-family:var(--mono);color:var(--bg)}
-    .nav-links{display:flex;gap:18px;font-weight:600}
-    .cta{background:linear-gradient(90deg,var(--teal),var(--accent));padding:10px 16px;border-radius:10px;color:var(--bg);font-weight:700;cursor:pointer;border:none}
+    .logo .mark{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;font-family:var(--mono);color:var(--bg)}
+    .nav-links{display:flex;gap:18px;font-weight:600;align-items:center}
+    .cta{background:linear-gradient(90deg,var(--primary),var(--accent));padding:10px 16px;border-radius:10px;color:var(--bg);font-weight:700;cursor:pointer;border:none;transition:transform 0.2s}
+    .cta:hover{transform:scale(1.05)}
+
+    #theme-toggle{margin-left:12px;cursor:pointer;font-size:18px}
 
     .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;padding:40px 0}
     .intro h1{font-size:50px;margin:0 0 8px;line-height:1.1;font-weight:800;letter-spacing:-0.02em}
-    .intro h1 .name{background:linear-gradient(90deg,var(--teal),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .tagline{font-family:var(--mono);font-size:16px;color:var(--teal);margin-bottom:16px;font-weight:600}
+    .intro h1 .name{background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .tagline{font-family:var(--mono);font-size:16px;color:var(--primary);margin-bottom:16px;font-weight:600}
     .intro p{color:rgba(246,248,251,0.9);font-size:18px;max-width:90%}
-    .highlight{background:linear-gradient(90deg,var(--teal),var(--accent));-webkit-background-clip:text;color:transparent;font-weight:700}
+    .highlight{background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;color:transparent;font-weight:700}
     .availability{margin-top:8px;color:var(--accent);font-weight:600}
     .location{font-size:14px;color:rgba(246,248,251,0.8);margin-top:4px}
     .buttons{display:flex;gap:12px;margin-top:20px}
@@ -54,20 +57,44 @@
     .skill{background:var(--glass-2);padding:14px;border-radius:10px}
     .skill h3{margin:0 0 8px;font-size:14px}
     .bar{height:10px;background:rgba(255,255,255,0.03);border-radius:8px;overflow:hidden}
-    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--accent));width:0}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));width:0;transition:width 1s ease}
     .skill small{opacity:0.8}
 
     .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .project{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:16px;border-radius:12px;min-height:180px;border:1px solid rgba(255,255,255,0.03)}
+    .project{background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:16px; border-radius:12px; min-height:180px; border:1px solid rgba(255,255,255,0.03); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;}
+    .project:hover{transform: translateY(-6px); box-shadow:0 15px 35px rgba(0,0,0,0.6);}
     .project h4{margin:0 0 6px}
     .project p{font-size:13px;color:rgba(246,248,251,0.85)}
     .status{font-size:12px;color:var(--accent);font-weight:600;margin-top:6px;display:block}
+    .project-links{display:flex;gap:10px;margin-top:10px}
+    .project-links a{font-size:12px;text-decoration:none;color:var(--primary);font-weight:600;border:1px solid var(--primary);padding:4px 8px;border-radius:6px;transition:background 0.3s,color 0.3s;}
+    .project-links a:hover{background:var(--primary);color:var(--bg)}
 
     form{display:grid;gap:12px;margin-top:20px}
     input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);color:var(--soft);font-family:var(--ui)}
-    button[type=submit]{background:linear-gradient(90deg,var(--teal),var(--accent));padding:10px;border-radius:8px;border:none;color:var(--bg);font-weight:700;cursor:pointer}
+    button[type=submit]{background:linear-gradient(90deg,var(--primary),var(--accent));padding:10px;border-radius:8px;border:none;color:var(--bg);font-weight:700;cursor:pointer;transition:transform 0.2s}
+    button[type=submit]:hover{transform:scale(1.05)}
 
     footer{padding:28px 0;text-align:center;color:rgba(246,248,251,0.6);font-size:14px}
+
+    /* Light theme */
+    body.light{
+      --bg:#f6f8fb;
+      --bg-2:#e0e6f0;
+      --primary:#007f8f;
+      --accent:#ff4500;
+      --soft:#071029;
+      --glass: rgba(0,0,0,0.06);
+      --glass-2: rgba(0,0,0,0.03);
+      --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    body.light header,
+    body.light footer,
+    body.light .card-profile,
+    body.light .project,
+    body.light .skill{
+      background: var(--glass-2);
+    }
 
     @media (max-width:980px){
       .hero{grid-template-columns:1fr;}
@@ -96,7 +123,7 @@
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
-          <button class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+          <span id="theme-toggle">🌙</span>
         </div>
       </nav>
 
@@ -109,7 +136,7 @@
           <div class="location">Location: India</div>
           <div class="buttons">
             <button class="cta" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
-            <button class="cta" style="background:transparent;border:1px solid var(--teal)" onclick="window.open('mailto:shrivastavakanishka06@gmail.com')">Email Me</button>
+            <button class="cta" style="background:transparent;border:1px solid var(--primary)" onclick="window.open('mailto:shrivastavakanishka06@gmail.com')">Email Me</button>
           </div>
         </div>
 
@@ -134,15 +161,15 @@
     <section id="skills">
       <h2 class="section-title">Skills & Expertise</h2>
       <div class="skills-grid">
-        <div class="skill"><h3>Java</h3><div class="bar"><i style="width:85%"></i></div><small>Proficiency: 85%</small></div>
-        <div class="skill"><h3>OOP Concepts</h3><div class="bar"><i style="width:80%"></i></div><small>Proficiency: 80%</small></div>
-        <div class="skill"><h3>Data Structures</h3><div class="bar"><i style="width:75%"></i></div><small>Proficiency: 75%</small></div>
-        <div class="skill"><h3>Git & GitHub</h3><div class="bar"><i style="width:70%"></i></div><small>Proficiency: 70%</small></div>
-        <div class="skill"><h3>Command Line</h3><div class="bar"><i style="width:65%"></i></div><small>Proficiency: 65%</small></div>
-        <div class="skill"><h3>Debugging</h3><div class="bar"><i style="width:78%"></i></div><small>Proficiency: 78%</small></div>
-        <div class="skill"><h3>Problem Solving</h3><div class="bar"><i style="width:88%"></i></div><small>Proficiency: 88%</small></div>
-        <div class="skill"><h3>Learning Agility</h3><div class="bar"><i style="width:92%"></i></div><small>Proficiency: 92%</small></div>
-        <div class="skill"><h3>Team Collaboration</h3><div class="bar"><i style="width:82%"></i></div><small>Proficiency: 82%</small></div>
+        <div class="skill"><h3>Java</h3><div class="bar"><i data-width="85%"></i></div><small>Proficiency: 85%</small></div>
+        <div class="skill"><h3>OOP Concepts</h3><div class="bar"><i data-width="80%"></i></div><small>Proficiency: 80%</small></div>
+        <div class="skill"><h3>Data Structures</h3><div class="bar"><i data-width="75%"></i></div><small>Proficiency: 75%</small></div>
+        <div class="skill"><h3>Git & GitHub</h3><div class="bar"><i data-width="70%"></i></div><small>Proficiency: 70%</small></div>
+        <div class="skill"><h3>Command Line</h3><div class="bar"><i data-width="65%"></i></div><small>Proficiency: 65%</small></div>
+        <div class="skill"><h3>Debugging</h3><div class="bar"><i data-width="78%"></i></div><small>Proficiency: 78%</small></div>
+        <div class="skill"><h3>Problem Solving</h3><div class="bar"><i data-width="88%"></i></div><small>Proficiency: 88%</small></div>
+        <div class="skill"><h3>Learning Agility</h3><div class="bar"><i data-width="92%"></i></div><small>Proficiency: 92%</small></div>
+        <div class="skill"><h3>Team Collaboration</h3><div class="bar"><i data-width="82%"></i></div><small>Proficiency: 82%</small></div>
       </div>
     </section>
 
@@ -153,18 +180,28 @@
           <h4>Java Applications Suite</h4>
           <p>Building comprehensive Java applications focusing on OOP principles, data structures, and algorithm implementation.</p>
           <span class="status">Status: In Progress</span>
+          <div class="project-links">
+            <a href="https://github.com/yourusername/java-applications" target="_blank">GitHub</a>
+            <a href="#" target="_blank">Live Demo</a>
+          </div>
         </article>
 
         <article class="project">
           <h4>Algorithm Mastery</h4>
           <p>Solving complex algorithmic challenges and implementing efficient data structures to strengthen problem-solving skills.</p>
           <span class="status">Status: Active</span>
+          <div class="project-links">
+            <a href="https://github.com/yourusername/algorithm-mastery" target="_blank">GitHub</a>
+          </div>
         </article>
 
         <article class="project">
           <h4>Future Innovations</h4>
           <p>Exploring emerging technologies and planning innovative projects to expand my technical expertise and impact.</p>
           <span class="status">Status: Planning</span>
+          <div class="project-links">
+            <a href="#" target="_blank">Ideas Board</a>
+          </div>
         </article>
       </div>
     </section>
@@ -175,10 +212,10 @@
       <p><strong>Email:</strong> shrivastavakanishka06@gmail.com<br>
       <strong>Phone:</strong> +91 74709 27071</p>
       <p><a href="Kanishka_Shrivastava_Resume.pdf" download>Download my Resume</a></p>
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="4" placeholder="Your Message" required></textarea>
+      <form id="contact-form">
+        <input type="text" name="from_name" placeholder="Your Name" required>
+        <input type="email" name="from_email" placeholder="Your Email" required>
+        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
       </form>
     </section>
@@ -188,13 +225,43 @@
      © 2024 Kanishka Shrivastava. Made with ❤️ • Crafted with passion and code.
   </footer>
 
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.12.0/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){emailjs.init("YOUR_USER_ID");})(); // Replace YOUR_USER_ID
+
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      emailjs.sendForm('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID', this)
+        .then(() => { alert('Message sent successfully! ✅'); form.reset(); },
+              (error) => { console.error(error); alert('Oops! Something went wrong ❌'); });
+    });
+  </script>
+
+  <!-- Skill bar animation -->
   <script>
-    // Animate skill bars
     const skillBars = document.querySelectorAll('.bar > i');
-    window.addEventListener('scroll', () => {
-      skillBars.forEach(bar => {
-        bar.style.width = bar.getAttribute('style').match(/width:\s*(\d+%)/)[1];
+    function animateSkills(){
+      const trigger = window.innerHeight*0.8;
+      skillBars.forEach(bar=>{
+        const top = bar.getBoundingClientRect().top;
+        if(top < trigger && !bar.classList.contains('animated')){
+          bar.style.width = bar.getAttribute('data-width');
+          bar.classList.add('animated');
+        }
       });
+    }
+    window.addEventListener('scroll', animateSkills);
+    window.addEventListener('load', animateSkills);
+  </script>
+
+  <!-- Theme toggle -->
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', ()=>{
+      document.body.classList.toggle('light');
+      toggleBtn.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
     });
   </script>
 </body>
