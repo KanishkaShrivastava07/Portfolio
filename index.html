@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kanishka Shrivastava — Developer</title>
-  <meta name="description" content="Portfolio of Kanishka Shrivastava — Developer & Software Enthusiast" />
+  <meta name="description" content="Portfolio of Kanishka Shrivastava — Java Developer, B.Tech CSE student specializing in software development and problem solving." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -40,7 +40,6 @@
     .intro h1 .name{background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
     .tagline{font-family:var(--mono);font-size:16px;color:var(--primary);margin-bottom:16px;font-weight:600}
     .intro p{color:rgba(246,248,251,0.9);font-size:18px;max-width:90%}
-    .highlight{background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;color:transparent;font-weight:700}
     .availability{margin-top:8px;color:var(--accent);font-weight:600}
     .location{font-size:14px;color:rgba(246,248,251,0.8);margin-top:4px}
     .buttons{display:flex;gap:12px;margin-top:20px}
@@ -51,10 +50,12 @@
     .meta{margin-top:12px;font-size:14px}
 
     section{padding:44px 0;border-top:1px solid rgba(255,255,255,0.02)}
-    h2.section-title{font-size:22px;margin:0 0 18px;color:var(--soft)}
+    h2.section-title{font-size:22px;margin:0 0 18px;color:var(--soft);position:relative;}
+    h2.section-title::after{content:"";display:block;width:50px;height:2px;background:linear-gradient(90deg,var(--primary),var(--accent));margin-top:8px;border-radius:2px;}
 
     .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .skill{background:var(--glass-2);padding:14px;border-radius:10px}
+    .skill{background:var(--glass-2);padding:14px;border-radius:10px;transition:transform 0.2s;}
+    .skill:hover{transform:translateY(-3px);}
     .skill h3{margin:0 0 8px;font-size:14px}
     .bar{height:10px;background:rgba(255,255,255,0.03);border-radius:8px;overflow:hidden}
     .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));width:0;transition:width 1s ease}
@@ -105,6 +106,7 @@
       .skills-grid{grid-template-columns:1fr}
       .projects{grid-template-columns:1fr}
       .intro h1{font-size:36px}
+      .avatar{height:300px;}
     }
   </style>
 </head>
@@ -116,33 +118,33 @@
           <div class="mark">KS</div>
           <div>
             <div style="font-weight:800">Kanishka Shrivastava</div>
-            <div style="font-size:12px;opacity:0.8">Java Developer • B.Tech CSE</div>
+            <div style="font-size:12px;opacity:0.8">Developer • B.Tech CSE</div>
           </div>
         </div>
         <div class="nav-links">
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
-          <span id="theme-toggle">🌙</span>
+          <span id="theme-toggle" aria-label="Toggle theme">☀️</span>
         </div>
       </nav>
 
       <div class="hero">
         <div class="intro">
-          <div class="tagline">Java Developer • Software Enthusiast • Problem Solver</div>
+          <div class="tagline">Developer • Software Enthusiast • Problem Solver</div>
           <h1>Hi, I'm <span class="name">Kanishka Shrivastava</span></h1>
           <p>I am pursuing a <strong>B.Tech in Computer Science and Engineering</strong>. I possess a strong foundation in <strong>Java programming</strong> and a keen interest in software development. Currently enhancing my programming skills and building practical projects to solve real problems.</p>
           <div class="availability">Available for internships & freelance</div>
           <div class="location">Location: India</div>
           <div class="buttons">
             <button class="cta" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
-            <button class="cta" style="background:transparent;border:1px solid var(--primary)" onclick="window.open('mailto:shrivastavakanishka06@gmail.com')">Email Me</button>
+            <a href="mailto:shrivastavakanishka06@gmail.com" class="cta" style="background:transparent;border:1px solid var(--primary);text-align:center;line-height:32px;">Email Me</a>
           </div>
         </div>
 
         <aside class="card-profile">
           <div class="avatar">
-            <img src="profile.png" alt="Kanishka Shrivastava">
+            <img src="profile.png" alt="Portrait of Kanishka Shrivastava" loading="lazy">
           </div>
           <div class="meta">
             <strong>Contact</strong><br>
@@ -211,7 +213,7 @@
       <p>Interested in working together or have a project in mind? Feel free to reach out via email or phone.</p>
       <p><strong>Email:</strong> shrivastavakanishka06@gmail.com<br>
       <strong>Phone:</strong> +91 74709 27071</p>
-      <p><a href="Kanishka_Shrivastava_Resume.pdf" download>Download my Resume</a></p>
+      <p><a href="Kanishka_Shrivastava_Resume.pdf" download class="cta">Download my Resume</a></p>
       <form id="contact-form">
         <input type="text" name="from_name" placeholder="Your Name" required>
         <input type="email" name="from_email" placeholder="Your Email" required>
@@ -266,4 +268,3 @@
   </script>
 </body>
 </html>
-
