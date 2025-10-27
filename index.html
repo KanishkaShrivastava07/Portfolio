@@ -13,6 +13,9 @@
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
   <!-- Custom styles -->
   <style>
     /* Global styles */
@@ -146,6 +149,23 @@
       50% { border-color: transparent; }
     }
     
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes techGlow {
+      0% { text-shadow: 0 0 5px rgba(0,212,255,0.5); }
+      50% { text-shadow: 0 0 20px rgba(0,212,255,0.9), 0 0 30px rgba(122,0,255,0.7); }
+      100% { text-shadow: 0 0 5px rgba(0,212,255,0.5); }
+    }
+    
     /* Header styles */
     header {
       position: fixed;
@@ -271,7 +291,7 @@
       -webkit-text-fill-color: transparent;
       text-transform: uppercase;
       letter-spacing: 2px;
-      animation: float 3s ease-in-out infinite;
+      animation: float 3s ease-in-out infinite, techGlow 3s infinite alternate;
     }
     
     .hero-subtitle {
@@ -315,8 +335,8 @@
     
     .profile-img-container {
       position: relative;
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 400px;
       margin: 0 auto;
       animation: pulse 3s infinite;
     }
@@ -326,7 +346,8 @@
       height: 100%;
       border-radius: 50%;
       border: 3px solid #1a1a1a;
-      box-shadow: 0 0 20px rgba(0,212,255,0.5);
+      box-shadow: 0 0 30px rgba(0,212,255,0.7);
+      object-fit: cover;
     }
     
     .profile-loading {
@@ -412,6 +433,7 @@
       font-size: 3rem;
       margin-bottom: 1rem;
       color: #00d4ff;
+      animation: techGlow 2s infinite alternate;
     }
     
     .skill-card h3 {
@@ -576,6 +598,7 @@
     .contact-icon {
       font-size: 1.5rem;
       color: #7a00ff;
+      animation: pulse 2s infinite;
     }
     
     .contact-link {
@@ -697,6 +720,16 @@
       transform: translateY(-5px);
     }
     
+    /* Mobile menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #e0e0e0;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
     /* Responsive styles */
     @media (max-width: 768px) {
       .hero-title {
@@ -731,25 +764,39 @@
         width: 100%;
         max-width: 300px;
       }
-    }
-    
-  .profile-img-container {
-  position: relative;
-  width: 400px;  /* Increased from 300px */
-  height: 400px; /* Increased from 300px */
-  margin: 0 auto;
-  animation: pulse 3s infinite;
-}
-
- .profile-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 3px solid #1a1a1a;
-  box-shadow: 0 0 30px rgba(0,212,255,0.7);
-  object-fit: cover;
-   }
-    
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(10,10,10,0.98);
+        padding: 5rem 2rem;
+        flex-direction: column;
+        transition: all 0.3s ease;
+        z-index: 1001;
+      }
+      
+      nav.active {
+        right: 0;
+      }
+      
+      nav a {
+        margin: 0.5rem 0;
+        font-size: 1.2rem;
+        display: block;
+      }
+      
+      .profile-img-container {
+        width: 300px;
+        height: 300px;
+      }
+      
       .hero-title {
         font-size: 2rem;
       }
@@ -762,17 +809,39 @@
         font-size: 2rem;
       }
     }
+    
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .profile-img-container {
+        width: 250px;
+        height: 250px;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- HEADER -->
-  <header>
+  <header class="shadow-lg">
     <div class="container header-container">
       <div class="logo">
         <div class="logo-icon"></div>
-        <h1 class="logo-text">KANISHKA SHR07</h1>
+        <h1 class="logo-text">KANISHKA TECH</h1>
       </div>
-      <nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="mainNav">
         <a href="#aboutCtn" class="nav-link">About</a>
         <a href="#skillsCtn" class="nav-link">Skills</a>
         <a href="#projectsCtn" class="nav-link">Projects</a>
@@ -802,7 +871,7 @@
       <h2 class="section-title">About Me</h2>
       <div class="about-container">
         <div class="profile-img-container">
-          <img id="profileImg" class="profile-img" src="profile.jpg" alt="Kanishka Shrivastava">
+          <img id="profileImg" class="profile-img" src="https://placehold.co/400x400/0a0a0a/00d4ff?text=Kanishka" alt="Kanishka Shrivastava">
         </div>
         <div class="about-text">
           <p>I am a Computer Science Engineering student currently pursuing my B.Tech degree. With a strong foundation in Java programming and a keen interest in software development, I'm building technical expertise through academic projects and self-driven learning.</p>
@@ -976,6 +1045,7 @@
       initParticles();
       animateSkillBars();
       setupScrollEffects();
+      setupMobileMenu();
     });
     
     // Particle animation for hero section
@@ -1121,6 +1191,23 @@
       });
     }
     
+    // Setup mobile menu
+    function setupMobileMenu() {
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mainNav = document.getElementById('mainNav');
+      
+      mobileMenuBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+      });
+      
+      // Close mobile menu when a link is clicked
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('active');
+        });
+      });
+    }
+    
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -1184,6 +1271,3 @@
   </script>
 </body>
 </html>
-
-
-
